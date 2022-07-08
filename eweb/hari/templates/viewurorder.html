@@ -1,0 +1,36 @@
+
+
+{% extends 'base_another.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for p in orders %}
+<div class="card border-dark mb-3" >
+    <div class="card-body text-dark">
+      <h5 class="card-title">Order ID: {{p.order.id}}</h5>
+      <p class="card-text">{{p.product.name}} </p>
+      <p class="card-text">Rs.{{p.product.price|floatformat:2}} Quantity: {{p.quantity}}</p>
+      <p class="card-text">Buyer-name: {{p.order.buyer}} </p>
+      
+      <p class="card-text">Delivery address:  {{p.order.delivery_address.apartment}}
+        {{p.order.delivery_address.area}} {{p.order.delivery_address.city}} {{p.order.delivery_address.state}}
+        {{p.order.delivery_address.country}}  {{p.order.delivery_address.pincode}}</p>
+        <p class="card-text">Current Status: {{p.status}} </p>
+        <p class="card-text">Date Ordered: {{p.order.date_ordered}} </p>
+        <p class="card-text">Change Status: 
+            <button data-product="{{p.id}}" data-action="pending" class="update-status">
+                pending </button>
+                <button data-product="{{p.id}}" data-action="out" class="update-status">
+                   out for delivery </button>
+               <button data-product="{{p.id}}" data-action="delivery" class="update-status">
+                       delivered </button>
+        </p>
+      
+     
+    </div>
+  </div>
+
+{% endfor %}
+
+{% endblock content %}

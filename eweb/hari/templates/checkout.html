@@ -1,0 +1,74 @@
+
+{% extends 'base_other.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2>Checkout</h2>
+
+
+{% for c in currcart%}
+<div class="card border-dark mb-3" style="max-width: 18rem;">
+    <div class="card-body text-dark">
+      <h5 class="card-title">{{c.product.name}}</h5>
+      <p class="card-text">Rs.{{c.product.price|floatformat:2}} Quantity: {{c.quantity}}</p>
+      <p class="card-text">Total Cost {{c.get_total}}</p>
+     
+    </div>
+  </div>
+  {% endfor %}
+  <button type="button" class="btn btn-primary btn-lg">{{cart_total}}</button>
+ 
+   <br>
+   <br>
+   <br>
+  <h4> Enter Address..</h4>
+  <form method="POST" action="">
+    {% csrf_token %} 
+    <div class="form-row">
+        <div class="form-group col-md-4">
+          <input type="text" class="form-control" name="address" placeholder="Adress" required value="{{shippi.apartment}}">
+        </div>
+        <div class="form-group col-md-2">
+          <input type="text" class="form-control" name="area" placeholder="Area" required value="{{shippi.area}}">
+        </div>
+        <div class="form-group col-md-2">
+            <input type="text" class="form-control" name="pincode" placeholder="Pincode" required value="{{shippi.pincode}}">
+         </div>
+      </div>
+       
+
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <input type="text" class="form-control" name="city" placeholder="City"  required value="{{shippi.city}}">
+        </div>
+        <div class="form-group col-md-2">
+          <input type="text" class="form-control" name="state" placeholder="State" required value="{{shippi.state}}">
+        </div>
+        <div class="form-group col-md-2">
+            <input type="text" class="form-control" name="country"  placeholder="Country" required value="{{shippi.country}}">
+         </div>
+      </div>
+      <button type="submit" class="btn btn-primary" name="Submit Adress">Submit Adress</button>
+
+ </form>
+
+
+
+
+<!--
+  <form method="POST" action="">
+    {% csrf_token %} 
+    <input type="text" name="address" placeholder="Address.." required value="{{shippi.apartment}}"><br>
+    <input type="text" name="pincode" placeholder="Pincode.." required value="{{shippi.pincode}}"><br>
+    <input type="text" name="area" placeholder="Area.." required value="{{shippi.area}}"><br>
+    <input type="text" name="city" placeholder="City.." required value="{{shippi.city}}"><br>
+    <input type="text" name="state" placeholder="State.." required value="{{shippi.state}}"><br>
+    <input type="text" name="country" placeholder="Country.." required value="{{shippi.country}}"><br>
+    <input type="submit" name="Submit Adress">
+    
+</form>-->
+<button  data-shippid="{{sid}}" class="do-order btn btn-primary">Order</button>
+
+
+{% endblock content %}

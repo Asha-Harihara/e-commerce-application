@@ -1,0 +1,32 @@
+
+{% extends 'base_other.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Buy Products</h2>
+<p> Hello, {{request.user}}</p>
+{% for product in products%}
+<div class="card mb-3" >
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{product.image.url}}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text">Rs.{{product.price|floatformat:2}}</p>
+          <p class="card-text"><small class="text-muted">Available:{{product.quantity}}</small></p>
+          <p class="card-text"><small class="text-muted">Seller:{{product.seller.username}}</small></p>
+          <button data-product="{{product.id}}"  data-action="add" class="update-cart"> Add to Cart </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+
+{% endblock content %}
+
+
+

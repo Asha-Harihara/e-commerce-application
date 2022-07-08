@@ -1,0 +1,26 @@
+
+
+{% extends 'base_other.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Ur cart</h2>
+
+{% for c in currcart%}
+<div class="card border-dark mb-3" style="max-width: 18rem;">
+    <div class="card-body text-dark">
+      <h5 class="card-title">{{c.product.name}}</h5>
+      <p class="card-text">Rs.{{c.product.price|floatformat:2}} Quantity: {{c.quantity}}</p>
+      <p class="card-text">Total Cost {{c.get_total}}</p>
+      <button data-product="{{c.product.id}}"  data-action="add" class="update-cart">+</button>
+      <button data-product="{{c.product.id}}"  data-action="remove" class="update-cart">-</button>
+    </div>
+  </div>
+  {% endfor %}
+
+
+
+
+  <button type="button" class="btn btn-primary btn-lg">{{cart_total}}</button>
+
+{% endblock content %}

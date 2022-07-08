@@ -1,0 +1,44 @@
+{% extends 'base_auth.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="col-md-4"> </div>
+    <div class="col-md-4 mt-5"> 
+       <div class="card mt-5">
+         <div class="card-body">
+         <div class="card-title py-3 text-center">
+           <h4>Register an account</h4>
+          
+<p>Already have an account <a href="{% url 'login'%}"> Login</a> </p>
+
+         </div>
+          
+           <form  method="POST">
+                {% csrf_token %}
+                {% for field in form%}
+                <div class="mb-3 ">
+                  {{field}}
+                </div>
+              
+                {% endfor %}
+
+               
+                
+                <button type="submit" name="Create User" class="btn btn-block btn-primary submit-btn">Register</button>
+           </form>
+
+  
+        </div>
+       </div>
+
+    </div>
+    <div class="col-md-4"> </div>
+</div>
+
+
+
+{% endblock content %}
+

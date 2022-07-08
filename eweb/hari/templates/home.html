@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+<div class="row">
+<div class="col">
+<div class="bg-light p-5 rounded">
+    <h1>Buy Products</h1>
+    <p class="lead">Get the best of shopping and enjoy low prices and great deals  </p>
+    <a class="btn btn-lg btn-primary" href="{% url 'buyhome' %}" role="button">Buy here &raquo;</a>
+  </div>
+</div>
+<div class="col">
+<div class="bg-light p-5 rounded">
+    <h1>Sell Products</h1>
+    <p class="lead">Begin your selling journey and make your products available to many people </p>
+    <a class="btn btn-lg btn-primary" href="{% url 'viewurprod' %}" role="button">Sell here &raquo;</a>
+  </div>
+</div>
+</div>
+</div>
+
+
+{% endblock content %}
+
+
